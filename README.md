@@ -69,11 +69,14 @@
 
   The following sections configure style guidelines for javascript projects
 
+  1. [Linting](#linting)
+  2. [Prettifying](#prettifying)
+
 #### Linting:
 
-  **ESLint** is the established standard for enforcing style in javascript projects.
-  The software comes with a useful `--init` command which creates a project's
-  linting configuration.
+  [ESLint](https://eslint.org/) is the established standard for enforcing style
+  in javascript projects. The software comes with a useful `--init` command
+  which creates a project's linting configuration.
 
   **Instructions for installation and configuration of ESLint with _npm v5+_:**
 
@@ -122,9 +125,9 @@
 
 #### Prettifying:
 
-  **Prettier** is the established standard for automatic code formatting in
-  javascript standards, with a focus on settling debates for the most common
-  code style questions.
+  [Prettier](https://prettier.io/) is the established standard for automatic
+  code formatting in javascript, with a focus on settling debates for the most
+  common code style questions.
 
   **Instructions for installation and configuration of Prettier with _npm v5+_:**
 
