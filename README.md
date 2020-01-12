@@ -126,6 +126,7 @@
   Prepend the branch name to the commit message
 
   ```sh
+  # (modified from https://gist.github.com/bartoszmajsak/1396344)
   # This way you can customize which branches should be skipped when
   # prepending commit message. 
   if [ -z "$BRANCHES_TO_SKIP" ]; then
