@@ -50,12 +50,98 @@
     - README
     - CONTRIBUTING (https://github.blog/2016-02-17-issue-and-pull-request-templates/)
     - [Setting up your project for healthy contributions](https://help.github.com/en/github/building-a-strong-community/setting-up-your-project-for-healthy-contributions)
-  2. package management
-  3. formatting (linting/prettifying)
-  4. build scripts
-  5. tests
-  6. benchmarks (e.g. package size, sort speed, test coverage)
-  7. publishing/versioning
+  2. source control (git)
+  3. package management
+  4. formatting (linting/prettifying)
+  5. build scripts
+  6. tests
+  7. benchmarks (e.g. package size, sort speed, test coverage)
+  8. publishing/versioning
+
+## Source Control
+
+  Tracking changes to source code between versions helps developers enable
+  collaboration and manage a codebase over time. Git is the most widely adopted
+  version control system, is free and open-source, and integrates with many
+  tools.
+
+### Githooks
+
+  Githooks are programs that trigger actions at certain points during git's
+  execution. See https://git-scm.com/docs/githooks. When developing an open-
+  source project, githooks are useful for enforcing code quality standards and
+  removing friction from the development process. The following are recommended
+  githooks for use during project development.
+
+#### post-checkout
+
+  Install javascript dependencies
+
+  ```sh
+  npm ci
+  ```
+
+#### post-merge
+
+  Install javascript dependencies
+
+  ```sh
+  npm ci
+  ```
+
+#### pre-commit
+
+  Check code base against style standards
+
+  ```sh
+  if !npm run checkLint; then
+    echo 'Failed lint check'
+    exit 1
+  fi
+  ```
+
+#### pre-push
+
+  Check code base style and run test suite
+
+  ```sh
+  if !npm run checkLint; then
+    echo 'Failed lint check'
+    exit 1
+  fi
+
+  if !npm run checkPretty; then
+    echo 'Failed formatting check'
+    exit 1
+  fi
+
+  if !npm run test; then
+    echo 'Failed test suite'
+    exit 1
+  fi
+  ```
+
+#### prepare-commit-msg
+
+  Prepend the branch name to the commit message
+
+  ```sh
+  # This way you can customize which branches should be skipped when
+  # prepending commit message. 
+  if [ -z "$BRANCHES_TO_SKIP" ]; then
+    BRANCHES_TO_SKIP=(master develop test qa)
+  fi
+
+  BRANCH_NAME=$(git symbolic-ref --short HEAD)
+  BRANCH_NAME="${BRANCH_NAME##*/}"
+
+  BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
+  BRANCH_IN_COMMIT=$(grep -c "\[$BRANCH_NAME\]" $1)
+
+  if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_COMMIT -ge 1 ]]; then 
+    sed -i.bak -e "1s/^/[$BRANCH_NAME] /" $1
+  fi
+  ```
 
 ## Formatting
 
@@ -103,7 +189,7 @@
 
   4. Add a "checkLint" script to the project's package.json with the
   following contents
-  
+
   ```sh
   eslint "<source_code_directory>/*"
   ```
