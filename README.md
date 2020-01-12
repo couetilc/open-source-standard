@@ -57,7 +57,7 @@
   6. benchmarks (e.g. package size, sort speed, test coverage)
   7. publishing/versioning
 
-### Formatting
+## Formatting
 
   A clear standard for written software style and formatting should be
   established to maintain quality and legibility of the code base.
@@ -65,11 +65,11 @@
   Tooling should be provided that minimizes effort spent maintaining the
   software's standards for style and formatting.
 
-#### Javascript
+### Javascript
 
   The following sections configure style guidelines for javascript projects
 
-##### Linting:
+#### Linting:
 
   **ESLint** is the established standard for enforcing style in javascript projects.
   The software comes with a useful `--init` command which creates a project's
@@ -120,7 +120,7 @@
   npm run checkLint
   ```
 
-##### Prettifying:
+#### Prettifying:
 
   **Prettier** is the established standard for automatic code formatting in
   javascript standards, with a focus on settling debates for the most common
