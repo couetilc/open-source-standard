@@ -24,18 +24,18 @@
   ISO 9126 is an international standard for the evaluation of software which
   established 6 quality characteristics used when evaluating software:
 
-    - Functionality
-      - (Suitability, Accurateness, Interoperability, Compliance, Security)
-    - Reliability
-      - (Maturity, Fault Tolerance, Recoverability)
-    - Usability
-      - (Understandability, Learnability, Operability)
-    - Efficiency
-      - (Time behavior, Resource behavior)
-    - Maintainability
-      - (Analyzability, Changeability, Stability, Testability)
-    - Portability
-      - (Adaptability, Installability, Conformance, Replaceability)
+  - Functionality
+    - (Suitability, Accurateness, Interoperability, Compliance, Security)
+  - Reliability
+    - (Maturity, Fault Tolerance, Recoverability)
+  - Usability
+    - (Understandability, Learnability, Operability)
+  - Efficiency
+    - (Time behavior, Resource behavior)
+  - Maintainability
+    - (Analyzability, Changeability, Stability, Testability)
+  - Portability
+    - (Adaptability, Installability, Conformance, Replaceability)
 
   These characteristics should be used as a guide when evaluating and describing
   software in technical documentation for an open-source project.
@@ -152,14 +152,24 @@
   Tooling should be provided that minimizes effort spent maintaining the
   software's standards for style and formatting.
 
-### Javascript
+  Linting and prettifying are two distinct approaches to formatting a code base.
+
+  Linting is a process that addresses code-quality by statically analyzing
+  source code against a set of rules that catch problematic coding patterns and
+  style choices. See https://eslint.org/docs/about/. Prettifying is a method of
+  code formatting purely concerned with code styling. That is, how code looks,
+  not how it acts. While linting tries to find errors in code without executing
+  it, prettifying enforces a coding style without modifying the abstract syntax
+  of the programming language.
 
   The following sections configure style guidelines for javascript projects
 
   1. [Linting](#linting)
   2. [Prettifying](#prettifying)
 
-#### Linting:
+### Linting
+
+#### Javascript
 
   [ESLint](https://eslint.org/) is the established standard for enforcing style
   in javascript projects. The software comes with a useful `--init` command
@@ -210,7 +220,9 @@
   npm run checkLint
   ```
 
-#### Prettifying:
+### Prettifying
+
+#### Javascript
 
   [Prettier](https://prettier.io/) is the established standard for automatic
   code formatting in javascript, with a focus on settling debates for the most
