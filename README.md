@@ -147,20 +147,23 @@
 ## Formatting
 
   A clear standard for written software style and formatting should be
-  established to maintain quality and legibility of the code base.
+  established to maintain quality and legibility of the code base. To enforce
+  this standard, tooling should be provided that minimizes effort spent
+  maintaining the source code's style and formatting.
 
-  Tooling should be provided that minimizes effort spent maintaining the
-  software's standards for style and formatting.
-
-  Linting and prettifying are two distinct approaches to formatting a code base.
+  **Linting** and **Prettifying** are two distinct approaches to formatting a
+  code base.
 
   Linting is a process that addresses code-quality by statically analyzing
   source code against a set of rules that catch problematic coding patterns and
-  style choices. See https://eslint.org/docs/about/. Prettifying is a method of
-  code formatting purely concerned with code styling. That is, how code looks,
-  not how it acts. While linting tries to find errors in code without executing
-  it, prettifying enforces a coding style without modifying the abstract syntax
-  of the programming language.
+  style choices [1]. Prettifying is a method of code formatting purely concerned
+  with code styling. That is, how code looks, not how it acts. While linting
+  tries to find errors in code without executing it, prettifying enforces a
+  coding style without modifying the abstract syntax of the programming language
+  [2].
+
+  [1] https://eslint.org/docs/about/
+  [2] https://prettier.io/docs/en/index.html
 
   The following sections configure style guidelines for javascript projects
 
